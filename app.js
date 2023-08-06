@@ -1,17 +1,18 @@
+const router = require('./list-view-router')
+const router2= require('./list-edit-router')
+
 const express = require('express');
 const app = express();
+const port = 3000;
+
+app.use(express.json());
 
 
-    const listaTareas =[{
-        id:"12",
-        isComplete: "true",
-        desciption:"walk the dog"
 
-    }]
-    app.get('/tareas', (req, res) => {
-            res.json(listaTareas);
-})
+app.use('/', router);
+app.use('/', router2)
 
-app.listen(3000, ()=>{
-    console.log("listen port");
-})
+
+app.listen(port, ()=>{
+    console.log(`listening on port ${port} `)
+});
